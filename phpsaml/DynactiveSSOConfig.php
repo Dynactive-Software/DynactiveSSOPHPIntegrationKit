@@ -16,6 +16,7 @@ class DynactiveSSOConfig{
 		$this->setUserUId($userUid);
 		$this->setFirstName($firstName);
 		$this->setLastName($lastName);
+		$this->setDisplayName($firstName . " " . $lastName);
                 $this->setIssuer($issuer);
 		if(!empty($email)){
 			$this->setEmail($email);
