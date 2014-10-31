@@ -13,7 +13,7 @@ Then you if you navigate your browser to http://localhost:8000/ you should be lo
 Editing the index.php file you can test out logging in as a student, instructor, or client admin.
 
 
-Steps on implementing your own SSO.
+Steps on implementation with this library for your own SSO.
 
 To get started you will need to generate an RSA private key and an X.509 cert file.  The X.509 cert needs to be uploaded on the dynactive LMS
 site.  We can do that if you email us the file, or we can walk you through instructions on how to do it if you plan on implementing SSO for
