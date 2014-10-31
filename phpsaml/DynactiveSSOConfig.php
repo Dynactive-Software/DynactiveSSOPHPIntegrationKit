@@ -10,7 +10,7 @@ class DynactiveSSOConfig{
 	private $issuer = null;
 	private $nameQualifier = null;
 	
-	function __construct($keyPath = "", $certificatePath = "", $issuer, $userUid = "", $firstName="", $lastName = "", $email="", $courseIds = array(), $responseUrl=""){
+	function __construct($keyPath = "", $certificatePath = "", $issuer="", $userUid = "", $firstName="", $lastName = "", $email="", $courseIds = array(), $responseUrl=""){
 		$this->setKeyPath($keyPath);
 		$this->setCertificatePath($certificatePath);
 		$this->setUserUId($userUid);
