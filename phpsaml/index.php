@@ -1,6 +1,5 @@
 <?php
 require_once 'simplesamlphp/_autoload.php';
-require_once 'Dynactive_SAML_Config.php';
 require_once 'Dynactive_SAML_Assertion_Response.php';
 require_once 'DynactiveSSOConfig.php';
 

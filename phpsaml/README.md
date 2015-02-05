@@ -1,7 +1,7 @@
 Dynactive SSO uses SAML 2.0 for it's SSO authentication piece.  
 The specification for SAML can be read here: https://wiki.oasis-open.org/security/FrontPage
 
-We are using the HTTP POST Binding.
+We are using the HTTP POST Binding and specifically IDP initiated login.
 
 This particular library wraps around the SimpleSAML library: https://simplesamlphp.org/
 
