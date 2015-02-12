@@ -132,7 +132,7 @@ class IDPResponseGenerator {
         $attributes = array();
         foreach ($properties as $value) {
             $value->setAccessible(true);
-            $userProperties[$value->getName()] = $value->getValue($user);
+            $attributes[$value->getName()] = $value->getValue($user);
             $value->setAccessible(false);
         }
         
