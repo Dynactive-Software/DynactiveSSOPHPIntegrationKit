@@ -1,0 +1,32 @@
+{
+    "name": "dynactivesoftware/sso-integration-kit",
+    "license": "MIT",
+    "type": "library",
+    "description": "DynactiveSoftware SSO Integration Kit",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-0": { "DynactiveSoftware\\SSO\\": ""}
+        ,"files": ["doctrineautoload.php"]
+    },
+    "target-dir": "",
+    "require": {
+        "php": ">=5.3.3",
+        "simplesamlphp/saml2": "~1.5.0",
+        "symfony/validator": "~2.2",
+        "monolog/monolog": "~1.12.0",
+        "doctrine/annotations": "~1.0",
+        "doctrine/cache": "~1.0"
+    },
+    "require-dev": {
+    },
+    "autoload-dev": {
+        "files": ["doctrineautoload_dev.php"]
+    },
+    "repositories" : [],
+    "scripts": {
+    },
+    "config": {
+    },
+    "extra": { }
+}
