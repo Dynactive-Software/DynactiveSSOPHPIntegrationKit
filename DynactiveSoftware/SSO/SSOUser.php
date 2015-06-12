@@ -47,6 +47,10 @@ class SSOUser {
      */
     private $role;
     
+    public function __construct() {
+        
+    }
+    
     /**
      * @Assert\True(message = "The user should have a valid role")
      */

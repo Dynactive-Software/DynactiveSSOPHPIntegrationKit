@@ -64,7 +64,7 @@ class IDPResponseGenerator {
         $response = new SAML2_Response();
         $response->setIssuer($config->getIssuer());
         $response->setDestination($config->getAuthenticationDestination());
-        $response->setId(uniqid());
+        $response->setId(uniqid("id_"));
         $response->setCertificates(array($config->getSpPublicCertificateContents()));
         
         // sign it with our private key so the sourceProvider can verify it came from us.
@@ -126,20 +126,33 @@ class IDPResponseGenerator {
         }
     }
     
-    protected function createAttributes(SSOUser $user, SSOConfig $ssoConfig) {
-        $reflection = new \ReflectionClass($user);
-        $properties = $reflection->getProperties();
+    private function getAttributesFromObject($object) {
+        $reflection = new \ReflectionClass($object);
         $attributes = array();
-        foreach ($properties as $value) {
-            $value->setAccessible(true);
-            $attributes[$value->getName()] = $value->getValue($user);
-            $value->setAccessible(false);
-        }
+        do {
+            $properties = $reflection->getProperties();
+            foreach ($properties as $value) {
+                $value->setAccessible(true);
+                if (!isset($attributes[$value->getName()])) {
+                    $attributes[$value->getName()] = $value->getValue($object);
+                }
+                $value->setAccessible(false);
+            }
+            $reflection = $reflection->getParentClass();
+        } while ($reflection != null);
         
-        // add the logoff, login, and error roles
-        $attributes['redirectOnLogin'] = $ssoConfig->getRedirectOnLoginDestination();
-        $attributes['redirectOnLogoff'] = $ssoConfig->getRedirectOnLogoffDestination();
-        $attributes['redirectOnError'] = $ssoConfig->getRedirectOnErrorDestination();
+        return $attributes;
+    }
+    
+    protected function createAttributes(SSOUser $user, SSOConfig $ssoConfig) {
+        
+        $attributes = $this->getAttributesFromObject($user);
+        
+        $configAttributes = $ssoConfig->getSSOAttributes();
+        // config values should trump user values.
+        foreach ($configAttributes as $key => $attribute) {
+            $attributes[$key] = $attribute;
+        }
         
         return $attributes;
     }

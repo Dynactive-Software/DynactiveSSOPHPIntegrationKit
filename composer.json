@@ -6,7 +6,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
-        "psr-0": { "DynactiveSoftware\\SSO\\": ""}
+        "psr-0": { "DynactiveSoftware\\SSO\\": "","DynactiveSoftware\\LearningPlatform\\": "" }
         ,"files": ["doctrineautoload.php"]
     },
     "target-dir": "",
@@ -15,8 +15,8 @@
         "simplesamlphp/saml2": "~1.5.0",
         "symfony/validator": "~2.2",
         "monolog/monolog": "~1.12.0",
-        "doctrine/annotations": "~1.0",
-        "doctrine/cache": "~1.0"
+        "doctrine/annotations": "v1.2.3",
+        "doctrine/cache": "1.4.0"
     },
     "require-dev": {
     },

@@ -271,4 +271,23 @@ class SSOConfig {
     public function setRedirectOnErrorDestination($errorDestination) {
         $this->redirectOnErrorDestination = $errorDestination;
     }
+    
+    public function getSSOAttributes() {
+        $attributes = array();
+        
+        // add the logoff, login, and error roles
+        if ($this->getRedirectOnLoginDestination() != null) {
+            $attributes['redirectOnLogin'] = $this->getRedirectOnLoginDestination();
+        }
+        
+        if ($this->getRedirectOnLogoffDestination() != null) {
+            $attributes['redirectOnLogoff'] = $this->getRedirectOnLogoffDestination();
+        }
+        
+        if ($this->getRedirectOnErrorDestination() != null) {
+            $attributes['redirectOnError'] = $this->getRedirectOnErrorDestination();
+        }
+        
+        return $attributes;
+    }
 }
