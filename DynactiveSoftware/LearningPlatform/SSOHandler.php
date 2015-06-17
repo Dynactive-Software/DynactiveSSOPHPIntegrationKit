@@ -11,6 +11,8 @@ use DynactiveSoftware\SSO\SSOUser;
 use DynactiveSoftware\SSO\SSOConfig;
 use DynactiveSoftware\SSO\IDPResponse;
 use DynactiveSoftware\SSO\IDPResponseGenerator;
+use DynactiveSoftware\SSO\SPErrorResponse;
+use DynactiveSoftware\SSO\SPSuccessResponse;
 
 /**
  * Description of SSOHandler
@@ -52,9 +54,24 @@ class SSOHandler {
         $base64Message = $idpResponse->getResponse();
         $data = array('SAMLResponse' => $base64Message, 'saml' => $base64Message,
             'mode' => self::MODE_CREATE);
-        $response = $this->sendDataToUrl($data, $config->getAuthenticationDestination());
+        $responseRaw = $this->sendDataToUrl($data, $config->getAuthenticationDestination());
         
-        // TODO: stephen need to do some kind of transformation here.
+        $jsonObj = json_decode($responseRaw, true);
+        
+        if (isset($jsonObj["status"]) && $jsonObj["status"] == "Error") {
+            $response = new SPErrorResponse();
+        }
+        else {
+            $response = new SPSuccessResponse();
+            $response->setSsoUID($jsonObj["userUid"]);
+        }
+        $response->setRawResponse($responseRaw);
+        $response->setIDPResponse($idpResponse);
+        
+        if (isset($jsonObj["message"])) {
+            $response->setMessage($jsonObj["message"]);
+        }
+        
         return $response;
     }
     

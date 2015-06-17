@@ -28,14 +28,14 @@ $user = new LMSUser();
 $user->setFirstName("John");
 $user->setLastName("Smith");
 $user->setEmail("test@dynactivesoftware.com");
-$user->setSSOUID("2");
+$user->setSSOUID("14");
 $user->setRole("STUDENT");
 $user->setCourseAccessList(array(5000));
 
 try {
     $ssoHandler = new SSOHandler();
     $response = $ssoHandler->createSSOUser($user, $config);
-    var_dump($response);
+    echo $response . "\n";
 }
 catch (Exception $ex) {
     // we missed a configuration option or something is setup incorrectly
