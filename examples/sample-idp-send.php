@@ -1,35 +1,20 @@
 <?php
-include "vendor/autoload.php";
+include "../vendor/autoload.php";
+include "config.php";
 
 use DynactiveSoftware\LearningPlatform\LMSUser;
-use DynactiveSoftware\LearningPlatform\LMSConfig;
 use DynactiveSoftware\LearningPlatform\SSOHandler;
+use DynactiveSoftware\LearningPlatform\LMSRole;
 
-$cwd = getcwd();
-$certPath = $cwd . DIRECTORY_SEPARATOR . "certs" . DIRECTORY_SEPARATOR . "sample" . DIRECTORY_SEPARATOR;
-$config = new LMSConfig();
-try {
-    
-    $config->setAuthenticationDestination("http://localhost:8888/lms/");
-    $config->setIdpPrivateKey($certPath . "test.pem");
-    $config->setSpPublicCert($certPath . "../dynactives.pem");
-    $config->setIssuer("http://www.dynactivesoftware.com/");
-    $config->setRedirectOnErrorDestination("http://localhost:8000/sample-idp-error-handler.php");
-    $config->setRedirectOnLogoffDestination("http://localhost:8000/sample-idp-logoff.php");
-    $config->setResponseUrl("http://localhost:8000/sample-idp-redirect.php");
-}
-catch (Exception $ex) {
-    // if the config threw an exception we need to check the keys
-    echo $ex;
-    exit;
-}
+// defined in config.php
+$config = getLMSConfig();
 
 $user = new LMSUser();
 $user->setFirstName("John");
 $user->setLastName("Smith");
 $user->setEmail("test@dynactivesoftware.com");
 $user->setSSOUID("15");
-$user->setRole("STUDENT");
+$user->setRole(LMSRole::ClientAdmin);
 $user->setCourseAccessList(array(5000));
 
 try {

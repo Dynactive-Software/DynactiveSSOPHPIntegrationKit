@@ -2,7 +2,7 @@
 namespace DynactiveSoftware\LearningPlatform;
 
 /**
- * Description of LMSUser
+ * Represents a user in the Learning Platform System
  *
  * @author snielson
  */
