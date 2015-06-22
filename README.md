@@ -40,7 +40,7 @@ If you are including this library through composer add this to your composer.jso
 "repositories": [
     {
         "type": "vcs",
-        "url": "https://github.com/Dynactive-Software/DynactiveSSOIntegrationKit.git"
+        "url": "https://github.com/Dynactive-Software/DynactiveSSOPHPIntegrationKit.git"
     }
 ]
 ```
@@ -49,7 +49,7 @@ And add the following to your require
 ```
 "require": {
     // other libraries
-    ,"dynactive-software/dynactiveSSOIntegrationKit": "v2.1+"
+    ,"dynactive-software/dynactive-sso-php-integration-kit": "v2.1+"
 }
 ```
 
@@ -59,7 +59,10 @@ If you do not have composer installed you can get it here: [https://getcomposer.
 If you want to see how the process flows right away you can just do the following
 if you have php 5.4+ you can run the CLI server and the current example should work for you.  
 go to the examples directory and run the following:
-`php -S localhost:8000 ./`
+
+```Shell
+php -S localhost:8000 ./
+```
 
 Then you if you navigate your browser to [http://localhost:8000/sample-idp-authenticate.php](http://localhost:8000/sample-idp-authenticate.php)
 you should be logged in as a student.
@@ -75,7 +78,10 @@ site.  We can do that if you email us the file, or we can walk you through instr
 multiple sub clients.  This would be the case if you are a content publisher who plans on having your content used by your clients.
 
 The easiest way to do this is through openssl
-`openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt`
+
+```Shell
+openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt`
+```
 
 Now you can edit the config.php file and change the key and cert names/locations to where you have stored your private key and the dynactive public key
 You will also need to send us your certificate.crt or have us walk you through how to upload that in the LMS system.
@@ -83,19 +89,32 @@ You will also need to send us your certificate.crt or have us walk you through h
 Change the domain name to the domain hosting the sample and the clientLMS to the URL suffix you've been given.
 
 Then edit the specific user information in sample-idp-create-user.php and run that file
-`php sample-idp-create-user.php`
+
+```Shell
+php sample-idp-create-user.php`
+```
 
 The response you should get back is (with the ssoUid you sent):
+
 `status=OK,ssoUid=55848541446a9`
 
 You should save off your ssoUid for the user from the response
-`echo $response->getSsoUid();`
+
+```PHP
+echo $response->getSsoUid();
+```
 
 From here you need to set the ssoUid for the user in sample-idp-authenticate.php
-`$user->setSSOUID("55848541446a9");`
+
+```PHP
+$user->setSSOUID("55848541446a9");
+```
 
 Now run the server again
-`php -S localhost:8000 ./`
+
+```Shell
+php -S localhost:8000 ./
+```
 
 Now if you open up a browser to [http://localhost:8000/sample-idp-authenticate.php](http://localhost:8000/sample-idp-authenticate.php)
 it should authenticate you to the site

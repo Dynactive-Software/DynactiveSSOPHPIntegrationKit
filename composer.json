@@ -1,10 +1,9 @@
 {
-    "name": "dynactivesoftware/sso-integration-kit",
+    "name": "dynactivesoftware/dynactive-sso-php-integration-kit",
     "license": "MIT",
     "type": "library",
     "description": "DynactiveSoftware SSO Integration Kit",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
+    "minimum-stability": "stable",
     "autoload": {
         "psr-0": { "DynactiveSoftware\\SSO\\": "","DynactiveSoftware\\LearningPlatform\\": "" }
         ,"files": ["doctrineautoload.php"]
