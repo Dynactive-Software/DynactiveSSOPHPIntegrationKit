@@ -89,7 +89,8 @@ if you have php 5.4+ you can run the CLI server and the current example should w
 go to the examples directory and run the following:
 
 ```Shell
-php -S localhost:8000 ./
+cd examples/;
+php -S localhost:8000;
 ```
 
 Then you if you navigate your browser to [http://localhost:8000/sample-idp-authenticate.php](http://localhost:8000/sample-idp-authenticate.php)
@@ -108,13 +109,22 @@ multiple sub clients.  This would be the case if you are a content publisher who
 The easiest way to do this is through openssl
 
 ```Shell
-openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt
+cd certs/
+openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt;
 ```
 
 Now you can edit the config.php file and change the key and cert names/locations to where you have stored your private key and the dynactive public key
+```PHP
+// $identityProviderPrivateKey = $certPath . "sample" . DIRECTORY_SEPARATOR . "idpkey.key";
+$identityProviderPrivateKey = $certPath . "privateKey.key";
+```
+
 You will also need to send us your certificate.crt or have us walk you through how to upload that in the LMS system.
 
 Change the domain name to the domain hosting the sample and the clientLMS to the URL suffix you've been given.
+```PHP
+$clientLMS = "your-lms-location";
+```
 
 Then edit the specific user information in sample-idp-create-user.php and run that file
 
@@ -122,9 +132,11 @@ Then edit the specific user information in sample-idp-create-user.php and run th
 php sample-idp-create-user.php
 ```
 
-The response you should get back is (with the ssoUid you sent):
+The response you should get back from this script is (with the ssoUid you sent):
 
 `status=OK,ssoUid=55848541446a9`
+
+The actual response from the API is a DynactiveSoftware/SSO/SPSuccessResponse object.
 
 You should save off your ssoUid for the user from the response
 
@@ -141,7 +153,7 @@ $user->setSSOUID("55848541446a9");
 Now run the server again
 
 ```Shell
-php -S localhost:8000 ./
+php -S localhost:8000
 ```
 
 Now if you open up a browser to [http://localhost:8000/sample-idp-authenticate.php](http://localhost:8000/sample-idp-authenticate.php)
