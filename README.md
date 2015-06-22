@@ -31,11 +31,11 @@ base you will need to call our create API for each one of these pre-existing use
 
 ## Install
 The easiest way to get setup is to use composer, you can run a composer install to verify your system requirements
-and install all of the dependency libraries. Links are provided above if you don't want to go this route.
-If you want to run this library stand-alone then do the following in order to get the right doctrine autoloader working:
-`composer install --dev`
+and install all of the dependency libraries. If you do not have composer installed you can get it here: [https://getcomposer.org/](https://getcomposer.org/)
 
-If you are including this library through composer add this to your composer.json file:
+The required dependencies can be installed manually by following the links above if you don't want to use composer.
+
+To include this library through composer add this to your composer.json file:
 ```
 "repositories": [
     {
@@ -53,7 +53,18 @@ And add the following to your require
 }
 ```
 
-If you do not have composer installed you can get it here: [https://getcomposer.org/](https://getcomposer.org/)
+If you want to run the samples standalone do the following.
+Clone the repo:
+
+```Shell
+git clone https://github.com/Dynactive-Software/DynactiveSSOPHPIntegrationKit.git
+```
+
+Run composer install
+```Shell
+cd DynactiveSSOPHPIntegrationKit;
+composer install --dev
+```
 
 ## Running Samples
 If you want to see how the process flows right away you can just do the following
@@ -80,7 +91,7 @@ multiple sub clients.  This would be the case if you are a content publisher who
 The easiest way to do this is through openssl
 
 ```Shell
-openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt`
+openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt
 ```
 
 Now you can edit the config.php file and change the key and cert names/locations to where you have stored your private key and the dynactive public key
@@ -91,7 +102,7 @@ Change the domain name to the domain hosting the sample and the clientLMS to the
 Then edit the specific user information in sample-idp-create-user.php and run that file
 
 ```Shell
-php sample-idp-create-user.php`
+php sample-idp-create-user.php
 ```
 
 The response you should get back is (with the ssoUid you sent):
