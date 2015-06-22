@@ -29,4 +29,8 @@ class SPSuccessResponse extends SPResponse {
     public function getSsoUid() {
         return $this->ssoUid;
     }
+    
+    public function __toString() {
+        return "status=" . $this->getStatus() . ",ssoUid=" . $this->getSsoUid();
+    }
 }

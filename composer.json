@@ -12,6 +12,7 @@
     "target-dir": "",
     "require": {
         "php": ">=5.3.3",
+        "ext-mcrypt": "*",
         "simplesamlphp/saml2": "~1.5.0",
         "symfony/validator": "~2.2",
         "monolog/monolog": "~1.12.0",

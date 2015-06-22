@@ -1,6 +1,7 @@
 <?php
 namespace DynactiveSoftware\LearningPlatform;
 
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Represents a user in the Learning Platform System
  *
@@ -8,9 +9,30 @@ namespace DynactiveSoftware\LearningPlatform;
  */
 class LMSUser extends \DynactiveSoftware\SSO\SSOUser {
     
+    /**
+     * @Assert\All({
+     *  @Assert\NotBlank,
+     *  @Assert\Type(type="integer"),
+     *  @Assert\GreaterThan(value=0)
+     * })
+     * @var array
+     */
     private $courseAccessList;
     
+    /**
+     * @Assert\Length(min = 1)
+     * @Assert\NotBlank
+     * @var string
+     */
     private $userUid;
+    
+    /**
+     * The course id to log a user into directly.  Optional field.
+     * @Assert\Type(type="integer")
+     * @Assert\GreaterThan(value=0)
+     * @var integer 
+     */
+    private $goDirectToCourse;
     
     public function __construct() {
         parent::__construct();
@@ -63,4 +85,14 @@ class LMSUser extends \DynactiveSoftware\SSO\SSOUser {
         }
         $this->courseAccessList = array_splice($this->courseAccessList, $index);
     }
+    
+    public function getGoDirectToCourse() {
+        return $this->goDirectToCourse;
+    }
+
+    public function setGoDirectToCourse($goDirectToCourse) {
+        $this->goDirectToCourse = $goDirectToCourse;
+    }
+
+
 }

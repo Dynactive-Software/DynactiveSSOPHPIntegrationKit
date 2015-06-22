@@ -95,10 +95,14 @@ class IDPResponseGenerator {
         $response->setRelayState($config->getRedirectOnLoginDestination());
         
         // now encrypt it using the sourceProvider's public key so that only they can decrypt it
-        $encryptedAssertion = new SAML2_EncryptedAssertion();
-        $encryptedAssertion->setAssertion($assertion, $config->getSpPublicCert());
-        
-        $response->setAssertions(array($encryptedAssertion));
+        if ($config->shouldEncryptAssertion()) {
+            $encryptedAssertion = new SAML2_EncryptedAssertion();
+            $encryptedAssertion->setAssertion($assertion, $config->getSpPublicCert());
+            $response->setAssertions(array($encryptedAssertion));
+        }
+        else {
+            $response->setAssertions(array($assertion));
+        }
         
         return $this->createIDPResponse($response, $config);
     }
@@ -134,7 +138,10 @@ class IDPResponseGenerator {
             foreach ($properties as $value) {
                 $value->setAccessible(true);
                 if (!isset($attributes[$value->getName()])) {
-                    $attributes[$value->getName()] = $value->getValue($object);
+                    $objValue = $value->getValue($object);
+                    if ($objValue != null) {
+                        $attributes[$value->getName()] = $objValue;
+                    }
                 }
                 $value->setAccessible(false);
             }

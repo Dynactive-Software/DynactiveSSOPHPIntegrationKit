@@ -98,10 +98,18 @@ class SSOConfig {
      */
     private $maxAssertionTimeAllowed;
     
+    /**
+     * If the assertion should be encrypted before sending it.  Turning this flag to false
+     * enables debugging of the assertion properties.
+     * @var boolean
+     */
+    private $encryptAssertion = true;
+    
     public function __construct() {
         $this->maxAssertionTimeAllowed = strtotime(self::DEFAULT_MAX_ASSERTION_TIME_ALLOWED);
+        $this->encryptAssertion = true;
     }
-    
+        
     /**
      * The identity provider's private key
      * @return XMLSecurityKey
@@ -271,6 +279,29 @@ class SSOConfig {
     public function setRedirectOnErrorDestination($errorDestination) {
         $this->redirectOnErrorDestination = $errorDestination;
     }
+    
+        /**
+     * Sets the assertions to be encrypted.
+     */
+    public function enableAssertionEncryption() {
+        $this->encryptAssertion = true;
+    }
+    
+    /**
+     * Turns off the encryption of the assertion, which can be useful for debugging.
+     */
+    public function disableAssertionEncryption() {
+        $this->encryptAssertion = false;
+    }
+    
+    /**
+     * Returns if the assertion sent to the SP should be encrypted
+     * @return boolean
+     */
+    public function shouldEncryptAssertion() {
+        return $this->encryptAssertion;
+    }
+
     
     public function getSSOAttributes() {
         $attributes = array();

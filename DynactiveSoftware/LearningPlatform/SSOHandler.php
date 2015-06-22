@@ -58,10 +58,11 @@ class SSOHandler {
         
         $jsonObj = json_decode($responseRaw, true);
         
-        if (isset($jsonObj["status"]) && $jsonObj["status"] == "Error") {
-            $response = new SPErrorResponse();
+        $response = new SPErrorResponse();
+        if (!isset($jsonObj["status"])) {
+            $response->setMessage("No response came back from the server");
         }
-        else {
+        else if ($jsonObj["status"] == "OK") {
             $response = new SPSuccessResponse();
             $response->setSsoUID($jsonObj["userUid"]);
         }
