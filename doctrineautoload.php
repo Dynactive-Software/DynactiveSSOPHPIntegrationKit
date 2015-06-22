@@ -8,7 +8,7 @@ use \Doctrine\Common\Annotations\AnnotationRegistry;
 $autoloadFile = DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR  . 'autoload.php';
 $autoloadPath = __DIR__ . $autoloadFile;
 if (!file_exists($autoloadPath)) {
-    $autoloadPath = dirname(dirname($autoloadPath)) . $autoloadFile;
+    $autoloadPath = dirname(dirname(dirname(__DIR__))) . $autoloadFile;
 }
 $loader = require $autoloadPath;
 
