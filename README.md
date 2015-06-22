@@ -35,12 +35,14 @@ and install all of the dependency libraries. If you do not have composer install
 
 The required dependencies can be installed manually by following the links above if you don't want to use composer.
 
+### Library Method
+
 To include this library through composer add this to your composer.json file:
 ```
 "repositories": [
     {
         "type": "vcs",
-        "url": "https://github.com/Dynactive-Software/DynactiveSSOPHPIntegrationKit.git"
+        "url": "git@github.com:Dynactive-Software/DynactiveSSOPHPIntegrationKit.git"
     }
 ]
 ```
@@ -53,11 +55,26 @@ And add the following to your require
 }
 ```
 
+If you have not setup an ssh token/key with github you will be asked to do that as part
+of the composer install.
+
+The library files will be installed at:
+
+`vendor/dynactive-software/dynactive-sso-php-integration-kit/`
+
+Copy the examples and certs folder to the current directory
+```Shell
+cp -rf vendor/dynactive-software/dynactive-sso-php-integration-kit/examples ./
+cp -rf vendor/dynactive-software/dynactive-sso-php-integration-kit/certs ./
+```
+
+### Standalone method
+
 If you want to run the samples standalone do the following.
 Clone the repo:
 
 ```Shell
-git clone https://github.com/Dynactive-Software/DynactiveSSOPHPIntegrationKit.git
+git clone git@github.com:Dynactive-Software/DynactiveSSOPHPIntegrationKit.git
 ```
 
 Run composer install

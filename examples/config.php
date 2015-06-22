@@ -1,5 +1,8 @@
 <?php
 
+// attempt to see if we can find our vendor directory
+include ".." . DIRECTORY_SEPARATOR . "vendor" . DIRECTORY_SEPARATOR . "autoload.php";
+
 /**
  * Configures and returns the LMSConfig for the samples.  Change these values
  * to your particular setup.

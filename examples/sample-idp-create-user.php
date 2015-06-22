@@ -1,5 +1,4 @@
 <?php
-include "../vendor/autoload.php";
 include "config.php";
 
 use DynactiveSoftware\LearningPlatform\LMSUser;
