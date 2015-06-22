@@ -61,12 +61,12 @@ if you have php 5.4+ you can run the CLI server and the current example should w
 go to the examples directory and run the following:
 `php -S localhost:8000 ./`
 
-Then you if you navigate your browser to [http://localhost:8000/sample-idp-send.php](http://localhost:8000/sample-idp-send.php)
+Then you if you navigate your browser to [http://localhost:8000/sample-idp-authenticate.php](http://localhost:8000/sample-idp-authenticate.php)
 you should be logged in as a student.
 
 The example for creating a user can be found in the examples/sample-idp-create-user.php file.
 
-The example for authenticating a user can be found in examples/idp-send.php
+The example for authenticating a user can be found in examples/sample-idp-authenticate.php
 
 ## Implementation
 
@@ -91,13 +91,13 @@ The response you should get back is (with the ssoUid you sent):
 You should save off your ssoUid for the user from the response
 `echo $response->getSsoUid();`
 
-From here you need to set the ssoUid for the user in sample-idp-send.php
+From here you need to set the ssoUid for the user in sample-idp-authenticate.php
 `$user->setSSOUID("55848541446a9");`
 
 Now run the server again
 `php -S localhost:8000 ./`
 
-Now if you open up a browser to [http://localhost:8000/sample-idp-send.php](http://localhost:8000/sample-idp-send.php)
+Now if you open up a browser to [http://localhost:8000/sample-idp-authenticate.php](http://localhost:8000/sample-idp-authenticate.php)
 it should authenticate you to the site
 
 If there are any errors they are sent to http://localhost:8000/sample-dip-error-handler.php
