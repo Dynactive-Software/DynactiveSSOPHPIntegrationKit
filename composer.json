@@ -1,6 +1,6 @@
 {
     "name": "dynactivesoftware/dynactive-sso-php-integration-kit",
-    "license": "MIT",
+    "license": "",
     "type": "library",
     "description": "DynactiveSoftware SSO Integration Kit",
     "minimum-stability": "stable",
@@ -19,9 +19,6 @@
         "doctrine/cache": "1.4.0"
     },
     "require-dev": {
-    },
-    "autoload-dev": {
-        "files": ["doctrineautoload_dev.php"]
     },
     "repositories" : [],
     "scripts": {

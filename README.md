@@ -49,7 +49,7 @@ And add the following to your require
 ```
 "require": {
     // other libraries
-    ,"dynactive-software/dynactive-sso-php-integration-kit": "v2.1+"
+    ,"dynactive-software/dynactive-sso-php-integration-kit": "~2.1"
 }
 ```
 
