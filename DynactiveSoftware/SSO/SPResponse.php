@@ -28,13 +28,13 @@ class SPResponse {
     private $idpResponse;
     
     /**
-     * The response status from the source provider.
+     * The response status from the service provider.
      * @var string
      */
     private $status;
     
     /**
-     * Message details of source provider response.
+     * Message details of service provider response.
      * @var string
      */
     private $message;

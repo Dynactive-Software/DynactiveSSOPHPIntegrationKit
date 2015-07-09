@@ -18,6 +18,8 @@ User creation should occur at the time a user is created in your system.  For ex
 account is created, or when a customer purchases a course you are selling.  If you have an existing customer / user 
 base you will need to call our create API for each one of these pre-existing users before they have access.
 
+This particular file explains how to get up and running with the Integration Kit.  You can read more about our overall SSO process [Dynactive SSO Overview](DynactiveSSOOverview.md)
+
 ## Requirements
 
 * [php composer](https://getcomposer.org/)
