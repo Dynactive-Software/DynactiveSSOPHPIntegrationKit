@@ -162,7 +162,7 @@ class SSOConfig {
      */
     public function setSpPublicCert($spPublicCertPath) {
         if(!is_string($spPublicCertPath)){
-			throw new Exception("The certificate path must be a string.");
+			throw new \Exception("The certificate path must be a string.");
 		}
         
         $spSecurityKey = new XMLSecurityKey(XMLSecurityKey::RSA_1_5, array('type' => 'public'));
