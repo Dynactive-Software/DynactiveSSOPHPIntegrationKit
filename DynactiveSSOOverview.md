@@ -53,8 +53,8 @@ When the user logs out they are sent to the redirectOnLogoff parameter sent as p
 
 Attribute        | Explanation                                                                                                                                         |
 ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------|
-firstName        | The first name of the user, 2 character minimum                                                                                                     |
-lastName         | The last name of the user, 2 character minimum                                                                                                      |
+firstName        | The first name of the user, 1 character minimum                                                                                                     |
+lastName         | The last name of the user, 1 character minimum                                                                                                      |
 email            | The email address of the user                                                                                                                       |
 displayName      | The name the user wants displayed to other users                                                                                                    | 
 role             | The type of student. Valid values are STUDENT, INSTRUCTOR, CLIENT_ADMIN                                                                             |

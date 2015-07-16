@@ -12,7 +12,7 @@ class SSOUser {
     
     /**
      *
-     * @Assert\Length(min = 2)
+     * @Assert\Length(min = 1)
      * @Assert\NotBlank
      * @var string
      */
@@ -20,7 +20,7 @@ class SSOUser {
     
     /**
      *
-     * @Assert\Length(min = 2)
+     * @Assert\Length(min = 1)
      * @Assert\NotBlank
      * @var string
      */
