@@ -20,4 +20,9 @@ class LMSRole {
      * Can deploy new courses, update existing courses, and manage client settings.
      */
     const ClientAdmin = "CLIENT_ADMIN";
+
+    /**
+     * Similar to student role, but progress in the course is not saved.
+     */
+    const Demo = "DEMO_USER";
 }
