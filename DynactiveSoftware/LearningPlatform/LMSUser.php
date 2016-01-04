@@ -34,6 +34,12 @@ class LMSUser extends \DynactiveSoftware\SSO\SSOUser {
      */
     private $goDirectToCourse;
     
+     /**
+     * @Assert\Length(min = 1)
+     * @var string
+     */
+    private $displayName;
+    
     public function __construct() {
         parent::__construct();
         $this->courseAccessList = array();
@@ -52,6 +58,14 @@ class LMSUser extends \DynactiveSoftware\SSO\SSOUser {
         $this->setSsoUID($uid);
     }
     
+    public function getDisplayName() {
+        return $this->displayName;
+    }
+
+    public function setDisplayName($displayName) {
+        $this->displayName = $displayName;
+    }
+
     public function getUserUid() {
         return $this->userUid;
     }
