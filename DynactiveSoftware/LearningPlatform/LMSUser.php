@@ -20,6 +20,16 @@ class LMSUser extends \DynactiveSoftware\SSO\SSOUser {
     private $courseAccessList;
     
     /**
+     * @Assert\All({
+     *  @Assert\NotBlank,
+     *  @Assert\Type(type="integer"),
+     *  @Assert\GreaterThan(value=0)
+     * })
+     * @var array
+     */
+    private $classAccessList;
+    
+    /**
      * @Assert\Length(min = 1)
      * @Assert\NotBlank
      * @var string
@@ -98,6 +108,36 @@ class LMSUser extends \DynactiveSoftware\SSO\SSOUser {
             throw new \InvalidArgumentException("courseId $courseId was not found in course access list");
         }
         $this->courseAccessList = array_splice($this->courseAccessList, $index);
+    }
+    
+    public function clearClassAccessList() {
+        $this->classAccessList = array();
+    }
+    
+    public function setClassAccessList(array $classes) {
+        $this->clearClassAccessList();
+        foreach ($classes as $classId) {
+            $this->addClassAccess($classId);
+        }
+    }
+    
+    public function getClassAccessList() {
+        return $this->classAccessList;
+    }
+    
+    public function addClassAccess($classId) {
+        if (!is_int($classId)) {
+            throw new \InvalidArgumentException("classId must be a valid integer, $classId was given");
+        }
+        $this->classAccessList[] = $classId;
+    }
+    
+    public function removeClassAccess($classId) {
+        $index = array_search($classId, $this->classAccessList);
+        if ($index < 0) {
+            throw new \InvalidArgumentException("classId $classId was not found in the class access list");
+        }
+        $this->classAccessList = array_splice($this->classAccessList, $index);
     }
     
     public function getGoDirectToCourse() {

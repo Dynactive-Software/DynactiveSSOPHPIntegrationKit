@@ -27,6 +27,7 @@ $user->setEmail("test@dynactivesoftware.com");
 // the type of user this is. See LMSRole for more explanation on the individual roles.
 $user->setRole(LMSRole::Student);
 //$user->setRole(LMSRole::Instructor);
+//$user->setRole(LMSRole::ClassInstructor);
 //$user->setRole(LMSRole::ClientAdmin);
 
 // comment this line out if you are a ClientAdmin
@@ -41,6 +42,15 @@ $user->setCourseAccessList(array(5000001));
 // if you want the user to go directly to a course instead of their LMS dashboard
 // you would pass in the course id you want them to go to here.
 //$user->setGoDirectToCourse(5000001);
+
+// uncomment this line if you have classes you are enrolling the student in.
+// the identifiers of the classes inside a course you want this user to have access to.
+// These are the Class ID numbers that come from the Class Management section 
+// at SOURCE_PROVIDER_AUTHENTICATION_LOCATION . "/#t=Class Management"
+// each array value must be a valid int
+// Note this should be ALL of the classes that this user has purchased, or been 
+// given access to for the LMS
+//$user->setClassAccessList(array(1416));
 
 try {
     $ssoHandler = new SSOHandler();
