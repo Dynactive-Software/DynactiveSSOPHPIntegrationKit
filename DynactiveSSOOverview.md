@@ -57,7 +57,7 @@ firstName        | The first name of the user, 1 character minimum              
 lastName         | The last name of the user, 1 character minimum                                                                                                      |
 email            | The email address of the user                                                                                                                       |
 displayName      | The name the user wants displayed to other users                                                                                                    | 
-role             | The type of student. Valid values are STUDENT, INSTRUCTOR, CLIENT_ADMIN                                                                             |
+role             | The type of student. Valid values are STUDENT, INSTRUCTOR, CLASS_INSTRUCTOR, CLIENT_ADMIN                                                                             |
 courseAccessList | The courses that the user has access to. Found on the Deploy course section that CLIENT_ADMIN users have access to                                  |
 goDirectToCourse | Course identifier that the user should be sent to directly upon finishing authentication.                                                           |
 responseUrl      | The URL location that Dynactive LMS should send the user and it's SSO response to for post-authentication processing on the Identity Provider's site|
@@ -65,5 +65,5 @@ redirectOnLogin  | Where to send the user to when they have logged in, if you wa
 userUid          | Unique user identifier, 1 character minimum.                                                                                                        |
 redirectOnError  | The location to send error responses to if there is an error.  If this value is empty, errors are sent to the responseUrl field                     |
 redirectOnLogout  | The location to send the students to when they logout.                     |
-
+classAccessList  | The classes that the user has access to.  Found on the Class Management area that CLIENT_ADMIN and INSTRUCTOR users have access to.                 |
 

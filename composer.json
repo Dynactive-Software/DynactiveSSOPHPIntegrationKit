@@ -15,7 +15,7 @@
         "simplesamlphp/saml2": "~1.5.0",
         "symfony/validator": "^2.7",
         "monolog/monolog": "~1.12.0",
-        "doctrine/annotations": "v1.2.3",
+        "doctrine/annotations": "v1.2.6",
         "doctrine/cache": "1.4.0"
     },
     "require-dev": {

@@ -12,12 +12,22 @@ class LMSRole {
     const Student = 'STUDENT';
     
     /**
-     * Manages students and can view student grades as well as access courses
+     * Manages students and can view student grades as well as access courses.  Can create and administer classes.
      */
     const Instructor = "INSTRUCTOR";
     
     /**
-     * Can deploy new courses, update existing courses, and manage client settings.
+     * Manages students and can view student grades as well as access classes
+     */
+    const ClassInstructor = "CLASS_INSTRUCTOR";
+    
+    /**
+     * Can deploy new courses, update existing courses, manage client settings, and manage classes.
      */
     const ClientAdmin = "CLIENT_ADMIN";
+
+    /**
+     * Similar to student role, but progress in the course is not saved.
+     */
+    const Demo = "DEMO_USER";
 }

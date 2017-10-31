@@ -52,7 +52,7 @@ class SSOUser {
     }
     
     /**
-     * @Assert\True(message = "The user should have a valid role")
+     * @Assert\IsTrue(message = "The user should have a valid role")
      */
     public function isValidRole() {
         
