@@ -2,7 +2,7 @@
 namespace DynactiveSoftware\SSO;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use XMLSecurityKey;
+use RobRichards\XMLSecLibs\XMLSecurityKey;
 
 /**
  * Configuration file for SSO.  Note the private key and public certificate must be set.
