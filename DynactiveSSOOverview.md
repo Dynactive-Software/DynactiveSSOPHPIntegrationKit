@@ -64,5 +64,6 @@ responseUrl      | The URL location that Dynactive LMS should send the user and 
 redirectOnLogin  | Where to send the user to when they have logged in, if you want to send them to a particular location on the LMS                                    |
 userUid          | Unique user identifier, 1 character minimum.                                                                                                        |
 redirectOnError  | The location to send error responses to if there is an error.  If this value is empty, errors are sent to the responseUrl field                     |
+redirectOnLogout  | The location to send the students to when they logout.                     |
 classAccessList  | The classes that the user has access to.  Found on the Class Management area that CLIENT_ADMIN and INSTRUCTOR users have access to.                 |
 

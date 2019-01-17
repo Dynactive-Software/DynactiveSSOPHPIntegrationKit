@@ -41,7 +41,7 @@ function getLMSConfig() {
     /**
      * The location that will be used to authenticate with the LMS
      */
-    $sourceProviderAuthenticationLocation = "http://dscmslms.appspot.com/" . $clientLMS . "/";
+    $sourceProviderAuthenticationLocation = "https://www.dynactiveeducation.com/" . $clientLMS . "/";
 
     /** 
      * This is your Fully Qualified Domain Name FQDN.  If you are running the cli php server you can leave this alone 
